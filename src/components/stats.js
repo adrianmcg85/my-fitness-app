@@ -1,9 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import FetchStrava from './strava';
 
 class Stats extends Component{
     render(){
         return(
-            <p>hello world</p>
+            <div>
+                test
+            <FetchStrava />
+            </div>
+
         )
     }
 }
