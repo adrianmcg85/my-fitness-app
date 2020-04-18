@@ -1,13 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import {authorize} from './data'
-import Sport_Filter from './filter'
+import SportFilter from './filter'
 
 class FetchStrava extends Component{
     constructor(props){
         super(props);
         this.state = {
             loading: true,
-            run_data: {}
+            my_data: {}
         };
     }
 
@@ -18,22 +18,16 @@ class FetchStrava extends Component{
         const data = await res.json()
         await this.setState({
             loading: false,
-            run_data: data
+            my_data: data
         })
-        console.log(this.state.run_data)
+        console.log(this.state.my_data)
     }
-    //     return  console.log('test')
-        // <React.Fragment>
-        // 
-
-        // </React.Fragment>
-    // }
     render(){
         return(
             <div>
                 {this.state.loading ? <div>Loading...</div> : <div>
                     <Fragment>
-                    <Sport_Filter />
+                    <SportFilter data={this.state.my_data} />
 
                     </Fragment>
                 </div> }
