@@ -5,7 +5,6 @@ class Stats extends Component{
     render(){
         return(
             <div>
-                test
             <FetchStrava />
             </div>
 
