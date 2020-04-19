@@ -1,14 +1,6 @@
 
 const auth_link = 'https://www.strava.com/oauth/token'
 
-// function get_activity(res){
-//     const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`;
-//     fetch(activities_link)
-//         .then(
-//             (res) =>
-//                 console.log(res.json())
-//         )
-// }
 export async function authorize(){
     const res = await fetch(auth_link,{
         method: 'post',
