@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class SportFilter extends Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.handleFilter = this.handleFilter.bind(this)
         this.state = {
             type: []
         }
@@ -19,12 +20,15 @@ class SportFilter extends Component{
             })
 
     }
+    handleFilter(item){
+        this.props.type(item)
+    }
 
     render(){
         return(
             <div>
             {this.state.type.map((item, i)=>(
-                <p key={i}>{item}</p>
+                <a key={i} href="#" onClick={()=>{this.handleFilter({item})}}>{item}</a>
             ))}
             </div>
         )}}
