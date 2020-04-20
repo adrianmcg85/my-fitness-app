@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {authorize} from './data'
 import SportFilter from './filter'
-import DisplayStats from './stateDisplay'
+import DisplayStats from './statDisplay'
 
 class FetchStrava extends Component{
     constructor(props){
