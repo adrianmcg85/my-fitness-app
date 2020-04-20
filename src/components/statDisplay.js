@@ -19,8 +19,9 @@ class DisplayStats extends Component {
             }
         }
         )
+        let a = Math.floor(dist / count)
         this.setState({
-            avg: dist / count
+            avg: a
         })
     };
     componentDidMount(){
@@ -37,7 +38,7 @@ class DisplayStats extends Component {
     render() {
         return (
             <Fragment>
-            <h2>Average</h2>
+            <h2>{this.props.title}</h2>
                 <p>
                     {this.state.avg} km
                 </p>
