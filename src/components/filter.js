@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 class SportFilter extends Component{
     constructor(props){
@@ -28,8 +28,10 @@ class SportFilter extends Component{
         return(
             <div>
             {this.state.type.map((item, i)=>(
-                <a key={i} href="#" onClick={()=>{this.handleFilter({item})}}>{item}</a>
-            ))}
+                <Fragment>
+                 <a key={i} href="#" onClick={()=>{this.handleFilter({item})}}>{item}</a> &nbsp;
+                 </Fragment>
+            ))} 
             </div>
         )}}
 export default SportFilter
