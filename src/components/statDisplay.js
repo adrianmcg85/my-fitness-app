@@ -10,13 +10,20 @@ class DisplayStats extends Component {
     get_average(prop_type) {
         var count = 0;
         var dist = 0;
+        // var d = new Date();
+        // var previous = d.getFullYear() + '/'  + ('0' + (d.getMonth()+1)).slice(-2) + '/' +  (d.getDate()-10);
+        // var today = new Intl.DateTimeFormat('en-GB').format(d);
+
         (this.props.data).map(item => {
-            if (item.type === prop_type) {
+            // var log_date = item.start_date.replace(/(T|Z)/g," ").split(" ")[0].replace(/-/g,'/');
+            if(count < this.props.logs){
+                if (item.type === prop_type) {
                 return (
                     dist = dist + item.distance,
                     count++
                 )
             }
+        }
         }
         )
         let a = Math.floor(dist / count)

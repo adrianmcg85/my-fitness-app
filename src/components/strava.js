@@ -39,7 +39,9 @@ class FetchStrava extends Component{
                     <SportFilter data={this.state.my_data} type={this.get_type} />
                     <p>{this.state.type_select}</p>
 
-                    <DisplayStats title="average" selectedType={this.state.type_select} data={this.state.my_data} />
+                    <DisplayStats title="average" logs="5" selectedType={this.state.type_select} data={this.state.my_data} />
+                    <DisplayStats title="average" logs="10" selectedType={this.state.type_select} data={this.state.my_data} />
+
 
                     </Fragment>
                 </div> }
