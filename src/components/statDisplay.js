@@ -28,7 +28,7 @@ class DisplayStats extends Component {
         )
         let a = Math.floor(dist / count)
         this.setState({
-            avg: a
+            avg: Math.floor(a/10)/100
         })
     };
     componentDidMount(){
