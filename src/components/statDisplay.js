@@ -46,23 +46,21 @@ class DisplayStats extends Component {
         }
     }
 
-    render() {
-        var time = this.state.avg_time;
-        var min = Math.floor(time/60);
-        var sec = time % 60;
+    sec_to_min(time){
+        var min = Math.floor(time/60) + ' Minutes ';
+        var sec = time % 60 + ' Seconds';
+        var time_and = time!==0? ' and ' : '';
+        return min + time_and + sec;
 
-        var pace = Math.floor(time / this.state.avg_dist);
-        var pace_sec = Math.floor(pace % 60) + ' seconds';
-        var pace_and = pace_sec!==0? ' and ' : '';
-        var pace_min = Math.floor(pace / 60) + ' minutes' + pace_and;
+    }
+
+    render() {
+        var pace_init = this.state.avg_time / this.state.avg_dist
+        var pace = this.sec_to_min(Math.floor(pace_init));
         var rate = null;
         if(this.props.selectedType === "Rowing"){
-            var rate_min = Math.floor(pace/120) + ' minutes ';
-            var rate_sec = Math.floor((pace % 60)/2)+ ' seconds';
-            var rate_and = pace_sec!==0? ' and ' : '';
-            rate = rate_min + rate_and + rate_sec ;
-            pace_min = null;
-            pace_sec = null;
+            var rate = this.sec_to_min(Math.floor(pace_init/2));
+            pace = null;
         }
 
 
@@ -74,8 +72,11 @@ class DisplayStats extends Component {
                 <span>Distance</span><br/>
                     {this.state.avg_dist} km
                 </p>
-                <p><span>Time</span><br/>{min} Minutes and {sec} Seconds</p>
-                <p><span>Pace/Rate</span><br/>{pace_min} {pace_sec} {rate}</p>
+                <p><span>Time</span><br></br>{this.sec_to_min(this.state.avg_time)}<br/>
+                
+                </p>
+                <p><span>Pace/Rate</span><br/>{pace}{rate}
+                </p>
                 
             </div>
 
