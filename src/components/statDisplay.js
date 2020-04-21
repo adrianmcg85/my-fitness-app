@@ -4,12 +4,13 @@ class DisplayStats extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            avg: 0
+            avg_dist: 0
         }
     }
     get_average(prop_type) {
         var count = 0;
         var dist = 0;
+        var time = 0;
         // var d = new Date();
         // var previous = d.getFullYear() + '/'  + ('0' + (d.getMonth()+1)).slice(-2) + '/' +  (d.getDate()-10);
         // var today = new Intl.DateTimeFormat('en-GB').format(d);
@@ -20,6 +21,7 @@ class DisplayStats extends Component {
                 if (item.type === prop_type) {
                 return (
                     dist = dist + item.distance,
+                    time = time + item.moving_time,
                     count++
                 )
             }
@@ -27,8 +29,10 @@ class DisplayStats extends Component {
         }
         )
         let a = Math.floor(dist / count)
+        let t = Math.floor(time / count);
         this.setState({
-            avg: Math.floor(a/10)/100
+            avg_dist: Math.floor(a/10)/100,
+            avg_time: t
         })
     };
     componentDidMount(){
@@ -43,13 +47,17 @@ class DisplayStats extends Component {
     }
 
     render() {
+        var time = this.state.avg_time;
+        var min = Math.floor(time/60);
+        var sec = time % 60;
         return (
             <Fragment>
             <div className="stat">
             <h2>{this.props.title}</h2>
                 <p>
-                    {this.state.avg} km
+                    {this.state.avg_dist} km
                 </p>
+                <p>{min} Minutes and {sec} Seconds</p>
             </div>
 
             </Fragment>
