@@ -1,6 +1,6 @@
 import React from 'react';
 import Stats from './components/stats';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
