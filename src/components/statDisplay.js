@@ -45,10 +45,13 @@ class DisplayStats extends Component {
     render() {
         return (
             <Fragment>
+            <div className="stat">
             <h2>{this.props.title}</h2>
                 <p>
                     {this.state.avg} km
                 </p>
+            </div>
+
             </Fragment>
         )
     }
