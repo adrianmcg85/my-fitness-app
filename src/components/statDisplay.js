@@ -50,14 +50,33 @@ class DisplayStats extends Component {
         var time = this.state.avg_time;
         var min = Math.floor(time/60);
         var sec = time % 60;
+
+        var pace = Math.floor(time / this.state.avg_dist);
+        var pace_sec = Math.floor(pace % 60) + ' seconds';
+        var pace_and = pace_sec!==0? ' and ' : '';
+        var pace_min = Math.floor(pace / 60) + ' minutes' + pace_and;
+        var rate = null;
+        if(this.props.selectedType === "Rowing"){
+            var rate_min = Math.floor(pace/120) + ' minutes ';
+            var rate_sec = Math.floor((pace % 60)/2)+ ' seconds';
+            var rate_and = pace_sec!==0? ' and ' : '';
+            rate = rate_min + rate_and + rate_sec ;
+            pace_min = null;
+            pace_sec = null;
+        }
+
+
         return (
             <Fragment>
             <div className="stat">
             <h2>{this.props.title}</h2>
                 <p>
+                <span>Distance</span><br/>
                     {this.state.avg_dist} km
                 </p>
-                <p>{min} Minutes and {sec} Seconds</p>
+                <p><span>Time</span><br/>{min} Minutes and {sec} Seconds</p>
+                <p><span>Pace/Rate</span><br/>{pace_min} {pace_sec} {rate}</p>
+                
             </div>
 
             </Fragment>
